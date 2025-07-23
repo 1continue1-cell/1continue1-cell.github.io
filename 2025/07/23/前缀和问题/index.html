@@ -19,15 +19,15 @@
   <meta name="author" content="1continue1-cell">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前缀和你都不会么？那你还打什么acm呢？">
+    <meta name="description" content="一维前缀和给出 n 个数字，一共 q 次查询，每一次查询问区间 [L,R] 内的数字之和。 如果遍历的话，时间复杂度太高，所以推荐使用前缀和 1234567891011121314151617181920212223242526#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;#define int long longconst int N &#x3D; 3e">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前缀和问题">
 <meta property="og:url" content="http://example.com/2025/07/23/%E5%89%8D%E7%BC%80%E5%92%8C%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="1continue1-cell">
-<meta property="og:description" content="前缀和你都不会么？那你还打什么acm呢？">
+<meta property="og:description" content="一维前缀和给出 n 个数字，一共 q 次查询，每一次查询问区间 [L,R] 内的数字之和。 如果遍历的话，时间复杂度太高，所以推荐使用前缀和 1234567891011121314151617181920212223242526#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;#define int long longconst int N &#x3D; 3e">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-23T12:46:20.000Z">
-<meta property="article:modified_time" content="2025-07-23T13:17:09.022Z">
+<meta property="article:modified_time" content="2025-07-23T14:29:46.028Z">
 <meta property="article:author" content="1continue1-cell">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          16 字
+          475 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -300,7 +300,16 @@
             
               <div class="markdown-body">
                 
-                <p>前缀和你都不会么？那你还打什么acm呢？</p>
+                <h2 id="一维前缀和"><a href="#一维前缀和" class="headerlink" title="一维前缀和"></a>一维前缀和</h2><p>给出 n 个数字，一共 q 次查询，每一次查询问区间 [L,R] 内的数字之和。</p>
+<p>如果遍历的话，时间复杂度太高，所以推荐使用前缀和</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">3e5</span> + <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> n,q;<br><span class="hljs-type">int</span> a[N];<br><span class="hljs-type">int</span> sum[N]; <br><span class="hljs-function"><span class="hljs-type">int32_t</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>    cin &gt;&gt; n &gt;&gt; q;<span class="hljs-comment">//读入 </span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=n;i++) cin &gt;&gt; a[i];<span class="hljs-comment">//初始化 </span><br>    <span class="hljs-comment">//下面两行代码实现了前缀和数组的初始化 </span><br>    sum[<span class="hljs-number">1</span>] = a[<span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>;i&lt;=n;i++) sum[i] = sum[i<span class="hljs-number">-1</span>] + a[i];<br>    <span class="hljs-comment">//sum[i] 记录的是从1到i 的数之和 </span><br>    <span class="hljs-keyword">while</span>(q--)<span class="hljs-comment">//q次查询 </span><br>    &#123;<br>        <span class="hljs-type">int</span> l,r;<br>        cin &gt;&gt; l &gt;&gt; r;<br>        <span class="hljs-type">int</span> ans = sum[r] - sum[l<span class="hljs-number">-1</span>];<span class="hljs-comment">//注意这个写法 </span><br>        cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="二维前缀和"><a href="#二维前缀和" class="headerlink" title="二维前缀和"></a>二维前缀和</h2><p>sum[i][j] 统计的是二维矩阵（1，1）到（i，j）的所有元素的和</p>
+<p>初始化：sum[i][j] &#x3D; a[i][j] + sum[i-1][j] + sum[i][j-1] - sum[i-1][j-1];</p>
+<p>答案：int ans &#x3D; sum[x2][y2] - sum[x2][y1-1] - sum[x1-1][y2] + sum[x1-1][y1-1];</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><span class="hljs-comment">//设置二维前缀sum的思路有利用容斥思想 </span><br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> a[<span class="hljs-number">110</span>][<span class="hljs-number">110</span>];<br><span class="hljs-type">int</span> sum[<span class="hljs-number">110</span>][<span class="hljs-number">110</span>];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>    cin &gt;&gt; n &gt;&gt; m;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=n;i++)<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>;j&lt;=m;j++)<br>            cin &gt;&gt; a[i][j];<br>    sum[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = a[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>];<br>    <span class="hljs-comment">//下面三行是在初始化二维的sum数组 </span><br>    <span class="hljs-comment">//因为我是从1，1开始的，所以直接这样初始化就可以 </span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=n;i++)<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>;j&lt;=m;j++)<br>            sum[i][j] = a[i][j] + sum[i<span class="hljs-number">-1</span>][j] + sum[i][j<span class="hljs-number">-1</span>] - sum[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>];<br>    <span class="hljs-type">int</span> q;<br>    cin &gt;&gt; q;<br>    <span class="hljs-keyword">while</span>(q--)<br>    &#123;<br>        <span class="hljs-type">int</span> x1,y1,x2,y2;<br>        cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2;<br>        <span class="hljs-comment">// 求从（x1,y1）到 （x2,y2） 的全部元素的和</span><br>        <span class="hljs-type">int</span> ans = sum[x2][y2] - sum[x2][y1<span class="hljs-number">-1</span>] - sum[x1<span class="hljs-number">-1</span>][y2] + sum[x1<span class="hljs-number">-1</span>][y1<span class="hljs-number">-1</span>];<br>        cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>; <br>    &#125;   <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
 
                 
               </div>
