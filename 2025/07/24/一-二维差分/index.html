@@ -19,15 +19,15 @@
   <meta name="author" content="1continue1-cell">
   <meta name="keywords" content="">
   
-    <meta name="description" content="鼠鼠我来整理哈希的笔记啦~  哈希的概念定义性质等的总结哈希的定义我们定义一个把字符串映射到一个整数的函数 f, f 被称为 Hash 函数 我们希望通过 f 函数判断两个字符串是否相等 哈希的性质(1) Hash 函数值不同，两个字符串一定不相同 (2) Hash 函数值相同，两个字符串大概率相同（也可能出现哈希冲突，小概率事件） 哈希冲突哈希冲突就是两个不同的字符串映射到了同一个哈希值上，在编">
+    <meta name="description" content="一维差分现在给出 n 个数字，给出 q 次操作，每次操作给定一个区间，让区间里的数字都加上一个数或者减去一个数 如果一点一点遍历的话，就太慢了，所以建议使用一维差分的方法来做 (1) d数组是差分数组，差分数组多申请一位这样就算 r &#x3D;&#x3D; n 也可以直接写上去，更新前缀和的时候不会算入d[n+1] (2) d数组一开始均为 0 ，最后求一遍前缀和得出的是差值，与 a 数组相加即">
 <meta property="og:type" content="article">
-<meta property="og:title" content="字符串哈希">
-<meta property="og:url" content="http://example.com/2025/07/24/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C/index.html">
+<meta property="og:title" content="一&#x2F;二维差分">
+<meta property="og:url" content="http://example.com/2025/07/24/%E4%B8%80-%E4%BA%8C%E7%BB%B4%E5%B7%AE%E5%88%86/index.html">
 <meta property="og:site_name" content="1continue1-cell">
-<meta property="og:description" content="鼠鼠我来整理哈希的笔记啦~  哈希的概念定义性质等的总结哈希的定义我们定义一个把字符串映射到一个整数的函数 f, f 被称为 Hash 函数 我们希望通过 f 函数判断两个字符串是否相等 哈希的性质(1) Hash 函数值不同，两个字符串一定不相同 (2) Hash 函数值相同，两个字符串大概率相同（也可能出现哈希冲突，小概率事件） 哈希冲突哈希冲突就是两个不同的字符串映射到了同一个哈希值上，在编">
+<meta property="og:description" content="一维差分现在给出 n 个数字，给出 q 次操作，每次操作给定一个区间，让区间里的数字都加上一个数或者减去一个数 如果一点一点遍历的话，就太慢了，所以建议使用一维差分的方法来做 (1) d数组是差分数组，差分数组多申请一位这样就算 r &#x3D;&#x3D; n 也可以直接写上去，更新前缀和的时候不会算入d[n+1] (2) d数组一开始均为 0 ，最后求一遍前缀和得出的是差值，与 a 数组相加即">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-07-24T00:00:16.000Z">
-<meta property="article:modified_time" content="2025-07-24T10:17:42.412Z">
+<meta property="article:published_time" content="2025-07-24T10:31:12.000Z">
+<meta property="article:modified_time" content="2025-07-24T10:34:44.577Z">
 <meta property="article:author" content="1continue1-cell">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
@@ -36,7 +36,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>字符串哈希 - 1continue1-cell</title>
+  <title>一/二维差分 - 1continue1-cell</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -215,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="字符串哈希"></span>
+            <span id="subtitle" data-typed-text="一/二维差分"></span>
           
         </div>
 
@@ -226,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-07-24 08:00" pubdate>
-          2025年7月24日 早上
+        <time datetime="2025-07-24 18:31" pubdate>
+          2025年7月24日 晚上
         </time>
       </span>
     
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          840 字
+          559 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
         
-          8 分钟
+          5 分钟
         
       </span>
     
@@ -295,45 +295,21 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">字符串哈希</h1>
+            <h1 id="seo-header">一/二维差分</h1>
             
             
               <div class="markdown-body">
                 
-                <p>鼠鼠我来整理哈希的笔记啦~ </p>
-<h2 id="哈希的概念定义性质等的总结"><a href="#哈希的概念定义性质等的总结" class="headerlink" title="哈希的概念定义性质等的总结"></a>哈希的概念定义性质等的总结</h2><h3 id="哈希的定义"><a href="#哈希的定义" class="headerlink" title="哈希的定义"></a>哈希的定义</h3><p>我们定义一个把字符串映射到一个整数的函数 f, f 被称为 Hash 函数</p>
-<p>我们希望通过 f 函数判断两个字符串是否相等</p>
-<h3 id="哈希的性质"><a href="#哈希的性质" class="headerlink" title="哈希的性质"></a>哈希的性质</h3><p>(1) Hash 函数值不同，两个字符串一定不相同</p>
-<p>(2) Hash 函数值相同，两个字符串大概率相同（也可能出现哈希冲突，小概率事件）</p>
-<h3 id="哈希冲突"><a href="#哈希冲突" class="headerlink" title="哈希冲突"></a>哈希冲突</h3><p>哈希冲突就是两个不同的字符串映射到了同一个哈希值上，在编写程序的时候我们应该尽量避免哈希冲突</p>
-<p>减小哈希冲突常用方法：二次映射（如果有一次哈希值不同，两个字符串就不同）</p>
-<h2 id="字符串哈希的相关代码"><a href="#字符串哈希的相关代码" class="headerlink" title="字符串哈希的相关代码"></a>字符串哈希的相关代码</h2><p>将一个字符串看作数字，设立一个进制（用base表示）,然后将这个字符串变成整数</p>
-<p>常用进制数：31 , 131 , 1313 , 13131 , 131313 </p>
-<p>取模：由于哈希值会超过既定数据范围，所以要有取模操作</p>
-<p>常见取模操作：</p>
-<p>(1) 开 unsigned long long 隐形取余</p>
-<p>(2) 定义模数 const int mod &#x3D; 1e9 + 7;</p>
-<h3 id="字符串哈希模板"><a href="#字符串哈希模板" class="headerlink" title="字符串哈希模板"></a>字符串哈希模板</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3370">P3370 【模板】字符串哈希 - 洛谷</a></p>
-<p>模板1</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ull;<br>unordered_map&lt;ull,<span class="hljs-type">int</span>&gt; mp;<span class="hljs-comment">// 记录每一个哈希值，溢出自动取余</span><br><span class="hljs-type">int</span> P = <span class="hljs-number">131</span>;<span class="hljs-comment">// 进制数 </span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    string str;<br>    cin &gt;&gt; str;<br>    ull temp = <span class="hljs-number">0</span>; <span class="hljs-comment">// 记录当前字符串的哈希值 </span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt;= str.<span class="hljs-built_in">size</span>(); i++)<br>        temp = temp*P + (str[i] - <span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-number">1</span>);<br>      mp[temp] = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">return</span> ;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int32_t</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>      cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>    <span class="hljs-type">int</span> t;<br>    cin &gt;&gt; t;<br>    <span class="hljs-keyword">while</span>(t--) <span class="hljs-built_in">solve</span>();<br>    <span class="hljs-type">int</span> ans = mp.<span class="hljs-built_in">size</span>();<br>    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h2 id="一维差分"><a href="#一维差分" class="headerlink" title="一维差分"></a>一维差分</h2><p>现在给出 n 个数字，给出 q 次操作，每次操作给定一个区间，让区间里的数字都加上一个数或者减去一个数</p>
+<p>如果一点一点遍历的话，就太慢了，所以建议使用一维差分的方法来做</p>
+<p>(1) d数组是差分数组，差分数组多申请一位这样就算 r &#x3D;&#x3D; n 也可以直接写上去，更新前缀和的时候不会算入d[n+1]</p>
+<p>(2) d数组一开始均为 0 ，最后求一遍前缀和得出的是差值，与 a 数组相加即可</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> n,q,l,r;<br><span class="hljs-type">int</span> a[<span class="hljs-number">110</span>];<br><span class="hljs-type">int</span> d[<span class="hljs-number">111</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>    cin &gt;&gt; n &gt;&gt; q;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=n;i++) cin &gt;&gt; a[i];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=q;i++)<br>    &#123;<br>        cin &gt;&gt; l &gt;&gt; r;<br>        <span class="hljs-type">int</span> temp;<br>        cin &gt;&gt; temp;<br>        d[l] += temp;<br>        d[r<span class="hljs-number">+1</span>] -= temp; <br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>;i&lt;=n;i++) d[i] = d[i<span class="hljs-number">-1</span>] + d[i];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=n;i++) a[i] = a[i] + d[i];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i =<span class="hljs-number">1</span>;i&lt;=n;i++) cout &lt;&lt; a[i] &lt;&lt;  <span class="hljs-string">&quot; &quot;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>模板2</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">StringHash</span> <span class="hljs-comment">// 封装了一个类，还是比较有逼格的~</span><br>&#123;<br>    vector&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>&gt; h,b;<br>    <span class="hljs-type">const</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> mod = <span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>;<br>    <span class="hljs-type">int</span> base;<br>    <span class="hljs-built_in">StringHash</span>(string &amp;s,<span class="hljs-type">int</span> base) :<span class="hljs-built_in">h</span>(s.<span class="hljs-built_in">size</span>()<span class="hljs-number">+1</span>,<span class="hljs-number">0</span>),<span class="hljs-built_in">b</span>(s.<span class="hljs-built_in">size</span>()<span class="hljs-number">+1</span>,<span class="hljs-number">0</span>),<span class="hljs-built_in">base</span>(base)<br>    &#123;<br>        b[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;    <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>,n = s.<span class="hljs-built_in">size</span>();i&lt;=n;i++)<br>        &#123;<br>            b[i] = b[i<span class="hljs-number">-1</span>]*base%mod;<br>            h[i] = (h[i<span class="hljs-number">-1</span>]*base + s[i<span class="hljs-number">-1</span>])%mod;<br>        &#125;<br>    &#125;    <br>    <span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-type">int</span> l,<span class="hljs-type">int</span> r)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> (h[r] - h[l<span class="hljs-number">-1</span>]*b[r-l<span class="hljs-number">+1</span>]%mod + mod)%mod;<br>    &#125;<br>&#125;;<br><span class="hljs-keyword">typedef</span> pair&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>,<span class="hljs-type">long</span> <span class="hljs-type">long</span>&gt; PLL;<br><span class="hljs-function"><span class="hljs-type">int32_t</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>    <span class="hljs-type">int</span> n;<br>    cin &gt;&gt; n;<br>    set&lt;PLL&gt; ans;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=n;i++)<br>    &#123;<br>        string s;<br>        cin &gt;&gt; s;<br>        <span class="hljs-function">StringHash <span class="hljs-title">h1</span><span class="hljs-params">(s,<span class="hljs-number">13131</span>)</span>,<span class="hljs-title">h2</span><span class="hljs-params">(s,<span class="hljs-number">9973</span>)</span></span>;<br>        <span class="hljs-comment">// 用两个哈希值代替一个字符串</span><br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> c1 = h<span class="hljs-number">1.</span><span class="hljs-built_in">get</span>(<span class="hljs-number">1</span>,s.<span class="hljs-built_in">size</span>());<br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> c2 = h<span class="hljs-number">2.</span><span class="hljs-built_in">get</span>(<span class="hljs-number">1</span>,s.<span class="hljs-built_in">size</span>());<br>        ans.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">PLL</span>(c1,c2)); <br>    &#125;<br>    cout &lt;&lt; ans.<span class="hljs-built_in">size</span>() &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="二维差分"><a href="#二维差分" class="headerlink" title="二维差分"></a>二维差分</h2><p>想要从（x1,y1）到（x2,y2）都加上或者减去一个数，建议使用二维差分</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long </span><br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> a[<span class="hljs-number">110</span>][<span class="hljs-number">110</span>];<br><span class="hljs-type">int</span> d[<span class="hljs-number">115</span>][<span class="hljs-number">115</span>];<span class="hljs-comment">//初始化出来的差分数组 </span><br><span class="hljs-function"><span class="hljs-type">int32_t</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);<br>    cin &gt;&gt; n &gt;&gt; m;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=n;i++)<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>;j&lt;=m;j++)<br>            cin &gt;&gt; a[i][j];<br>    <span class="hljs-type">int</span> q;<br>    cin &gt;&gt; q;<br>    <span class="hljs-keyword">while</span>(q--)<br>    &#123;<br>        <span class="hljs-type">int</span> x1,x2,y1,y2;<br>        <span class="hljs-type">int</span> temp;<br>        cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2 &gt;&gt; temp;<br>        d[x1][y1] += temp;<br>        d[x1][y2<span class="hljs-number">+1</span>] -=temp;<br>        d[x2<span class="hljs-number">+1</span>][y1] -= temp;<br>        d[x2<span class="hljs-number">+1</span>][y2<span class="hljs-number">+1</span>] += temp;    <br>    &#125; <br>    <span class="hljs-comment">// q 次操作之后，再对差分数组求二维前缀和</span><br>    <span class="hljs-comment">// 再将新的d数组加到a数组上，得到最终答案数组 </span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=n;i++)<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>;j&lt;=m;j++)<br>            d[i][j] = d[i][j] + d[i<span class="hljs-number">-1</span>][j] + d[i][j<span class="hljs-number">-1</span>] - d[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]; <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i =<span class="hljs-number">1</span>;i&lt;=n;i++)<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>;j&lt;=m;j++)<br>            a[i][j] = a[i][j] + d[i][j];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i =<span class="hljs-number">1</span>;i&lt;=n;i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>;j&lt;=m;j++)<br>            cout &lt;&lt; a[i][j]&lt;&lt;<span class="hljs-string">&#x27; &#x27;</span>;<br>        cout &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    &#125;<br>    <span class="hljs-comment">//综上得到了最终的二维数组的答案 </span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
-
-<h2 id="字符串哈希的进一步应用"><a href="#字符串哈希的进一步应用" class="headerlink" title="字符串哈希的进一步应用"></a>字符串哈希的进一步应用</h2><p><strong>(1) 滑动窗口问题</strong></p>
-<p>例如现在有字符串 abcdef，窗口的长度为 len</p>
-<p>abcd 表示为 A ：abase^3 + bbase^2 + cbase^1 + dbase^0;</p>
-<p>bcde 表示为 B ：b<em>base^3 + c</em>base^2 + d<em>base^1 + e</em>base^0;</p>
-<p>所以当窗口滑动的时候，两个字符串的转化关系为：</p>
-<p>A base - a base^len + e base^0</p>
-<p><strong>(2) 利用前缀和思想记录，并O (1) 地查询区间的哈希值</strong></p>
-<p>可以开两个数组分别表示进位和整体的哈希前缀值，然后进行区间查询</p>
-<h3 id="哈希求解最长回文串问题"><a href="#哈希求解最长回文串问题" class="headerlink" title="哈希求解最长回文串问题"></a>哈希求解最长回文串问题</h3><p>给定一个字符串，求这个字符串中<strong>最长的回文子串</strong></p>
-<p>求解思路：</p>
-<p>二分 + 字符串哈希</p>
-<p>从头到尾遍历字符串的每一位，在每一位上二分回文长度即可，在二分中利用字符串哈希</p>
 
                 
               </div>
@@ -379,8 +355,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>字符串哈希</div>
-      <div>http://example.com/2025/07/24/字符串哈希/</div>
+      <div>一/二维差分</div>
+      <div>http://example.com/2025/07/24/一-二维差分/</div>
     </div>
     <div class="license-meta">
       
@@ -424,18 +400,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/07/24/%E4%B8%80-%E4%BA%8C%E7%BB%B4%E5%B7%AE%E5%88%86/" title="一/二维差分">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">一/二维差分</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/07/23/%E5%89%8D%E7%BC%80%E5%92%8C%E9%97%AE%E9%A2%98/" title="前缀和问题">
-                        <span class="hidden-mobile">前缀和问题</span>
+                      <a href="/2025/07/24/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C/" title="字符串哈希">
+                        <span class="hidden-mobile">字符串哈希</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
